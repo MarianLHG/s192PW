@@ -6,7 +6,7 @@ use App\Http\Controllers\controladoreVistas;
 Route::get('/',[controladoreVistas::class, 'home'])->name('rutainicio');
 Route::get('/form',[controladoreVistas::class, 'formulario'])->name('rutaformulario');
 Route::get('/clientes',[controladoreVistas::class, 'consulta'])->name('rutaclientes');
-Route::view('/componentes','componentes')->name(name: 'rutacomponentes');
+Route::view('/componentes','componentes')->name( 'rutacomponentes');
 Route::post('/enviarCliente', [controladoreVistas::class, 'procesarCliente'])->name('rutaEnviar');
 
 
