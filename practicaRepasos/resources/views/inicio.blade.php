@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <div class="container mt-5 col-md-3">
+    <div class=" container mt-5 d-flex flex-column justify-content-center align-items-center text-center full-height">
     <div class="card" style="width: 18rem;">
        <div class="card-body">
          <h5 class="card-title">Marian Lizeth Hernández García</h5>
@@ -22,6 +22,10 @@
         <li class="list-group-item">Universidad Politécnica de Querétaro</li>
     </ul>
     </div> 
+    <div class="d-flex flex-column justify-content-center align-items-center text-center full-height">
+        <p>Presione el botón para ver Repaso 1</p>
+        <a href="{{ route('rutarepaso1') }}" class="btn btn-primary">Ir al Repaso 1</a>
+    </div>
     </div>
 </body>
 </html>
