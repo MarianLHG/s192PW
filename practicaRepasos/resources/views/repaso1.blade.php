@@ -10,7 +10,9 @@
 <body>
     <div class="container mt-5">
         <h1>Convertidor de unidades de almacenamiento</h1>
-        <form>
+        <form action="/conversionUnidades" method="POST">
+            @csrf
+
             <div class="mb-3">
                 <label for="valor" class="form-larabel">VALOR: </label>
                 <input type="number" class="form-control" id="valor" name="valor" required>
@@ -26,9 +28,11 @@
             </div>
             <button type="submit" class="btn btn-primary">Convertir</button>
         </form>
+        @if (isset($result))
             <div class="mb-3">
-                <h3>Resultado: {{}}</h3>
+                <h3>Resultado: {{$result}}</h3>
             </div>
+        @endif
     </div>
 </body>
 </html>
