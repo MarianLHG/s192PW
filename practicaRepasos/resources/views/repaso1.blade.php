@@ -33,6 +33,11 @@
                 <h3>Resultado: {{$result}}</h3>
             </div>
         @endif
+
+        <div class="d-flex justify-content-end align-items-center text-center full-height">
+        <a href="{{ route('rutainicio') }}" class="btn btn-primary">Regresar a Inicio</a>
+        </div>
+
     </div>
 </body>
 </html>

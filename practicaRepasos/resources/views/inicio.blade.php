@@ -23,7 +23,7 @@
     </ul>
     </div> 
     <div class="d-flex flex-column justify-content-center align-items-center text-center full-height">
-        <p>Presione el botón para ver Repaso 1</p>
+        <br/>
         <a href="{{ route('rutarepaso1') }}" class="btn btn-primary">Ir al Repaso 1</a>
     </div>
     </div>
