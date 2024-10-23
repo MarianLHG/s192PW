@@ -30,7 +30,7 @@
         </form>
         @if (isset($result))
             <div class="mb-3">
-                <h3>Resultado: {{$result}}</h3>
+                <h3> Equivalen a {{$result}}</h3>
             </div>
         @endif
 
