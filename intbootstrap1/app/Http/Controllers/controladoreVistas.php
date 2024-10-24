@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\validadorClientes;
 use Illuminate\Http\Request;
 
 class controladoreVistas extends Controller
@@ -15,21 +16,10 @@ class controladoreVistas extends Controller
     public function consulta(){
         return view('clientes');
     }
-    public function procesarCliente(Request $peticion){
-
-        //respuestas de redireccion 
-
-        //redireccion usando la ruta
-        //return redirect('/');
-
-        //redireccion usando en nombre de la ruta
-        //return redirect()->route('rutaclientes');
-
-        //redireccion al origen
-        //return back();
+    public function procesarCliente(validadorClientes $peticionValidada){
 
         //redireccion con valores en session
-        $usuario=$peticion->input('txtnombre'); 
+        $usuario=$peticionValidada->input('txtnombre'); 
 
         session()->flash('exito','se guardo el usuario '.$usuario);
         return to_route('rutaformulario');
