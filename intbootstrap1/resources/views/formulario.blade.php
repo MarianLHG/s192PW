@@ -28,7 +28,7 @@
             <div class="card-body text-justify">
 
 
-                <form action="/enviarCliente" method="POST">
+                <form action="/enviarCliente">
                     
                     @csrf 
 
@@ -56,7 +56,7 @@
                         <small class='fst-italic text-danger'>{{ $errors->first('txttelefono')}}</small>
                     </div>
 
-                    <button type="submit" class="btn btn-success btn-sm">{{__('Guardar Cliente')}}</button>
+                    <button type="submit" class="btn btn-success btn-sm">{{__('Enviar')}}</button>
                     
 
                 </form>
