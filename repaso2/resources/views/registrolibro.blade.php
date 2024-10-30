@@ -20,32 +20,32 @@
         @csrf
 
     <div class="mb-3">
-        <label for="formGroupExampleInput">ISBN</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        <label for="isbn">ISBN</label>
+        <input type="text" class="form-control" name="txtisbn">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2">Titulo</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        <label for="titulo">Titulo</label>
+        <input type="text" class="form-control" name="txtlibro">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2">Autor</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        <label for="autor">Autor</label>
+        <input type="text" class="form-control" name="txtautor">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2">Paginas</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        <label for="paginas">Paginas</label>
+        <input type="number" class="form-control" name="txtpaginas">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2">Año</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        <label for="year">Año</label>
+        <input type="number" class="form-control" name="txtyear">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2">Editorial</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        <label for="editorial">Editorial</label>
+        <input type="text" class="form-control" name="txteditorial">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2">Email de la editorial</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        <label for="corro">Email de la editorial</label>
+        <input type="email" class="form-control" name="txtcorreo">
     </div>
 
     <button type="submit" class="btn btn-success btn-sm">{{__('Guardar Libro')}}</button>
