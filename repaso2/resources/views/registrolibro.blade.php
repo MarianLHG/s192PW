@@ -57,7 +57,7 @@
     </div>
     <div class="mb-3">
         <label for="correo">Email de la editorial</label>
-        <input type="email" class="form-control" name="txtcorreo" value="{{old ('txtcorreo')}}">
+        <input type="text" class="form-control" name="txtcorreo" value="{{old ('txtcorreo')}}">
         <small class="fst-arial text-danger">{{$errors->first('txtcorreo')}}</small>
 
     </div>
