@@ -20,5 +20,6 @@
         </ul>
     </div>
     </nav>  
+    @yield('contenido')
 </body>
 </html>
