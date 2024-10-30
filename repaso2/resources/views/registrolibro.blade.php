@@ -22,42 +22,42 @@
 
     <div class="mb-3">
         <label for="isbn">ISBN</label>
-        <input type="text" class="form-control" name="txtisbn" value="old{{'txtisbn'}}">
+        <input type="text" class="form-control" name="txtisbn" value="{{old 'txtisbn'}}">
         <small>{{$errors->first('txtisbn')}}</small>
     </div>
     <div class="mb-3">
         <label for="titulo">Titulo</label>
-        <input type="text" class="form-control" name="txtlibro" value="old{{'txtlibro'}}">
+        <input type="text" class="form-control" name="txtlibro" value="{{old 'txtlibro'}}">
         <small>{{$errors->first('txtlibro')}}</small>
 
     </div>
     <div class="mb-3">
         <label for="autor">Autor</label>
-        <input type="text" class="form-control" name="txtautor" value="old{{'txtautor'}}">
+        <input type="text" class="form-control" name="txtautor" value="{{old 'txtautor'}}">
         <small>{{$errors->first('txtautor')}}</small>
 
     </div>
     <div class="mb-3">
         <label for="paginas">Paginas</label>
-        <input type="number" class="form-control" name="txtpaginas" value="old{{'txtpaginas'}}">
+        <input type="number" class="form-control" name="txtpaginas" value="{{old 'txtpaginas'}}">
         <small>{{$errors->first('txtpaginas')}}</small>
 
     </div>
     <div class="mb-3">
         <label for="year">Año</label>
-        <input type="number" class="form-control" name="txtyear" value="old{{'txtyear'}}">
+        <input type="number" class="form-control" name="txtyear" value="{{old 'txtyear'}}">
         <small>{{$errors->first('txtyear')}}</small>
 
     </div>
     <div class="mb-3">
         <label for="editorial">Editorial</label>
-        <input type="text" class="form-control" name="txteditorial" value="old{{'txteditorial'}}">
+        <input type="text" class="form-control" name="txteditorial" value="{{old 'txteditorial'}}">
         <small>{{$errors->first('txteditorial')}}</small>
 
     </div>
     <div class="mb-3">
         <label for="correo">Email de la editorial</label>
-        <input type="email" class="form-control" name="txtcorreo" value="old{{'txtcorreo'}}">
+        <input type="email" class="form-control" name="txtcorreo" value="{{old 'txtcorreo'}}">
         <small>{{$errors->first('txtcorreo')}}</small>
 
     </div>
