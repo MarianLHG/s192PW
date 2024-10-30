@@ -16,7 +16,7 @@ class controladorRepaso2 extends Controller
     public function guardarLibro(validadorLibros $peticion){
         $libro=request()->input('txtlibro');
 
-        session()->flash('exito', 'Todo correcto: libro "' .$libro . '" guardado');
+        session()->flash('exito', 'Todo correcto: libro ' .$libro .' guardado');
         return to_route('rutaregistro');
     }
 }    
