@@ -46,5 +46,13 @@
     
     <div class="mb-3">
     </div>
+
+    <footer class="bg-body-tertiary text-center">
+        <p> Biblioteca Gandhi</p>
+        <div class="text-canter p-3" style="background-color: rgba(0,0,0,0.5);">
+            <p>&copy; {{date('Y')}}-{{date('d')}} {{date('F')}}</p>
+        </div>
+    </footer>
+
  
  @endsection
