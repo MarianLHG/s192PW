@@ -39,6 +39,9 @@
         <label for="formGroupExampleInput2">Email de la editorial</label>
         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
     </div>
+
+    <button type="submit" class="btn btn-success btn-sm">{{__('Guardar Libro')}}</button>
+
     </form>
     </div>
     </div>
