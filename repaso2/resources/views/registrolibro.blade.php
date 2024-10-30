@@ -6,6 +6,7 @@
             <script>
                 Swal.fire({
                     title: "ÉXITO",
+                    text:"{{$value}}",
                     icon: "success"
                 });
             </script>
