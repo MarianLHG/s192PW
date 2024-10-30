@@ -12,7 +12,7 @@ class controladorRepaso2 extends Controller
     public function registro(){
         return view('registrolibro');
     }
-    public function guardarCliente(Request $peticion){
+    public function guardarLibro(Request $peticion){
         $libro=request()->input('txtlibro');
 
         session()->flash('exito', 'Todo correcto: libro ' .$libro + 'guardado');

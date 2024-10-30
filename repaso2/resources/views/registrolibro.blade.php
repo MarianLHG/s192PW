@@ -2,13 +2,21 @@
  @section('titulo', 'Registro')
  @section('contenido')
     <div class="container mt-5 col-md-6">
+        @session('exito')
+            <script>
+                Swal.fire({
+                    title: "ÉXITO",
+                    icon: "success"
+                });
+            </script>
+        @endsession
         <div class="card font-monospace">
             <div class="card-header fs-5 text-center">
                 {{__('Registro Libro')}}
             </div>
             <div class="card-body text-justify">
 
-    <form>
+    <form action="/enviarLibro" method="POST">
         @csrf
 
     <div class="mb-3">
