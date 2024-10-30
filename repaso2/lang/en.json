@@ -45,5 +45,17 @@
     "Unauthorized": "Unauthorized",
     "Verify Email Address": "Verify Email Address",
     "Whoops!": "Whoops!",
-    "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account."
+    "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account.",
+    "ISBN": "ISBN",
+    "Titulo": "Title",
+    "Autor": "Author",
+    "Paginas": "Pages",
+    "Año": "Year",
+    "Editorial": "Editorial",
+    "Email de la editorial": "Publisher email",
+    "Guardar Libro": "Save book",
+    "Biblioteca": "Library",
+    "Registro Libro": "Record book",
+    "Biblioteca Gandhi": "Gandhi Library"
+
 }
