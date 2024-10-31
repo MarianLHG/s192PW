@@ -25,7 +25,7 @@
         @endsession
         <div class="card font-monospace">
             <div class="card-header fs-5 text-center">
-                {{__('Registro Libro')}}
+                {{__('Registrar un Libro')}}
             </div>
             <div class="card-body text-justify">
 
