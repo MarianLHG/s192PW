@@ -1,6 +1,18 @@
  @extends('layouts.plantilla')
  @section('titulo', 'Registro')
  @section('contenido')
+ <head>
+    <style>
+    body, html{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .navbar{
+        background-color: #800000!important;
+    }   
+    </style>
+ </head>
     <div class="container mt-5 col-md-6">
         @session('exito')
             <script>

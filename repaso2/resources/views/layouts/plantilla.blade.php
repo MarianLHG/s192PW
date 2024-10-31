@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,21 +7,31 @@
     @vite(["resources/js/app.js"])
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>@yield('titulo')</title>
+    <style>
+    body, html{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .navbar{
+        background-color: #800000!important;
+    }   
+
+</style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{route('rutainicio')}}">{{__('Biblioteca')}}</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <img src="{{asset('images/librosicono.png')}}" width="60" height="60">
+    </div>
+    <a class="navbar-brand" href="{{route('rutainicio')}}" style="color: white; font-family: cambria; font-size: 20px;">{{__('Inicio')}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{route('rutaregistro')}}">{{__('Registro Libro')}}</a>
-        </li>
-        </ul>
-    </div>
-    </nav> 
+    </nav>
+ 
+    
     @yield('contenido')
     
 </body>
