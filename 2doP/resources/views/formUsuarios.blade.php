@@ -8,36 +8,55 @@
     @vite(['resources/app.js'])
 </head>
 <body>
+    <div class="container mt-5 col-md-6">
+        @session ('exito')
+            <script>
+                Swal.fire({
+                title: "Respuesta del servidor",
+                text: "{{$value}}",
+                icon: "success"
+                });
+            </script>
+        @endsession
+    
+        <div class="card font-monospace">
+            <div class="card-header fs-5 text-center">
+                Registrar Usuario
+            </div>
+        <div class="card-body text-justify">
+        
 
-    <h1 class="text-center text-primary mt-5 mb-4">Registro de usuarios</h1>
-
-    <div class="container  col-md-4">
-
-    <form>
+    <form action="/enviarDatos" method="POST">
 
         <div class="mb-3">
             <label  class="form-label">Correo: </label>
-            <input type="text" class="form-control"  name="correo">
-            
-
+            <input type="text" class="form-control"  name="txtcorreo">
+            <small class="fst-italic text-danger">{{$errors->first('txtcorreo')}}</small>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Contraseña: </label>
-            <input type="text" class="form-control"  name="contraseña">
+            <input type="text" class="form-control"  name="txtcontraseña">
+            <small class="fst-italic text-danger">{{$errors->first('txtcontraseña')}}</small>
+
         </div>                
 
         <div class="mb-3">
             <label  class="form-label">Edad: </label>
-            <input type="text" class="form-control" name="edad" >
+            <input type="text" class="form-control" name="txtedad" >
+            <small class="fst-italic text-danger">{{$errors->first('txtedad')}}</small>
         </div>
-
-
+        
+        
 
         <button type="" class="btn btn-danger "> Guardar Usuario </button>
+        </form>
+    </div>
+    
+    
+    <div class="mb-3">
+    </div>
 
-
-</div>
 
 
 </body>
