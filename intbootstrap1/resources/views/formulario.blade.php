@@ -28,7 +28,7 @@
             <div class="card-body text-justify">
 
 
-                <form action="/enviarCliente">
+                <form action="{{route('enviaCliente')}}" method="POST">
                     
                     @csrf 
 
