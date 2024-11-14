@@ -6,13 +6,13 @@ use App\Http\Controllers\clienteController;
 
 // controlador vistas
 Route::get('/',[controladoreVistas::class, 'home'])->name('rutainicio');
-Route::get('/clientes',[controladoreVistas::class, 'consulta'])->name('rutaclientes');
 Route::view('/componentes','componentes')->name( 'rutacomponentes');
 Route::post('/enviarCliente', [controladoreVistas::class, 'procesarCliente'])->name('rutaEnviar');
 
 // controlador cliente
 Route::get('/cliente/create',[clienteController::class, 'create'])->name('rutaformulario');
 Route::post('/cliente', [clienteController::class, 'store'])->name('enviaCliente');
+Route::get('/cliente',[clienteController::class, 'index'])->name('rutaclientes');
 
 
 
