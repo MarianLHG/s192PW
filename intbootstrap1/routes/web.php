@@ -13,6 +13,10 @@ Route::post('/enviarCliente', [controladoreVistas::class, 'procesarCliente'])->n
 Route::get('/cliente/create',[clienteController::class, 'create'])->name('rutaformulario');
 Route::post('/cliente', [clienteController::class, 'store'])->name('enviaCliente');
 Route::get('/cliente',[clienteController::class, 'index'])->name('rutaclientes');
+Route::get('/clientes/{id}/edit',[clienteController::class,'edit'])->name(name: 'editarCliente');
+Route::put('/clientes/{id}',[clienteController::class,'update'])->name(name: 'clientesUpdate');
+Route::delete('/clientes/{id}',[clienteController::class,'destroy'])->name(name: 'clientesEliminar');
+
 
 
 
