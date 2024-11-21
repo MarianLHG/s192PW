@@ -33,9 +33,6 @@
 
                     <button type="submit" class="btn btn-primary">Actualizar</button>
 
-                    <form action="{{route('clientesEliminar', $cliente->id)}}" method="POST">
-
-                    </form>
 
 
 
