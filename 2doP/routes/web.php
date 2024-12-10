@@ -3,5 +3,6 @@
 use App\Http\Controllers\controladorValidaciones;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/','formUsuarios');
-Route::post('/enviarDatos',[controladorValidaciones::class,'validarUsuario'])->name('rutaenviar');
+Route::get('/', [controladorValidaciones::class, 'form'])->name('rutaform');
+Route::post('/enviardatos', [controladorValidaciones::class, 'validarUsuario'])->name('rutaenviar');
+Route::view('/componentes', 'componentes')->name('rutacomponentes');
