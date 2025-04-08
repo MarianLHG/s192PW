@@ -15,29 +15,20 @@ Route::get('/RegistroProductos', function () {
     return view('productosRegistro');
 })->name('productosRegistro');
 
-Route::get('/Productos', function () {
-    return view('todosProductos');
-})->name('todosProductos');
 
-Route::get('/agregarComic', function () {
-    return view('comicsRegistro');
-})->name('comicsRegistro');
-
-Route::get('/agregarFigura', function () {
-    return view('figurasRegistro');
-})->name('figurasRegistro');
 
 Route::get('/Admin', function () {
     return view('perfilAdmin');
 })->name('perfilAdmin');
 
 #rutas controller
-
+Route::get('/agregarFigura', [FiguraController::class, 'create'])->name('figurasRegistro');
 Route::post('/figuras', [FiguraController::class, 'store'])->name('figuras.store');
 Route::get('/figuras/crear', [FiguraController::class, 'create'])->name('figuras.create');
 
 Route::get('/productos', [ProductoController::class, 'index'])->name('todosProductos');
 
+Route::get('/agregarComic', [ComicController::class, 'create'])->name('comicsRegistro');
 Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
 Route::get('/comics/crear', action: [ComicController::class, 'create'])->name('comics.create');
 

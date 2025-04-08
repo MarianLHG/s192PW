@@ -67,5 +67,4 @@ class ProveedorController extends Controller
 
         return redirect()->route('proveedores.index')->with('success', 'Proveedor eliminado correctamente.');
     }
-
 }

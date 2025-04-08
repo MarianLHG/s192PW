@@ -92,59 +92,71 @@
     <div class="bursts-container"></div>
 
     <form action="{{ route('comics.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="product-card">
-            <div class="product-image">
-                <input type="file" name="imagen" id="imageUpload" accept="image/*" class="form-control">
+    @csrf
+    <div class="product-card">
+        <div class="product-image">
+            <input type="file" name="imagen" id="imageUpload" accept="image/*" class="form-control">
+        </div>
+
+        <div class="product-details">
+            <input type="text" name="nombre" placeholder="Título del cómic" class="product-title-input"
+                style="width: 100%; font-size: 24px; margin-bottom: 20px; padding: 8px; border: 1px solid #555; background-color: #333; color: white;">
+
+            <div class="product-price-container" style="display: flex; align-items: center; margin-bottom: 30px;">
+                <span style="font-size: 30px; margin-right: 5px;">$</span>
+                <input type="text" name="precio" placeholder="Precio"
+                    style="width: 80%; font-size: 42px; font-weight: bold; padding: 5px; border: 1px solid #555; background-color: #333; color: white;">
             </div>
 
-            <div class="product-details">
-                <input type="text" name="titulo" placeholder="Título del cómic" class="product-title-input" style="width: 100%; font-size: 24px; margin-bottom: 20px; padding: 8px; border: 1px solid #555; background-color: #333; color: white;">
+            <select name="stock_actual" class="quantity-selector">
+                <option value="">Cantidad de Registro</option>
+                @for ($i = 1; $i <= 50; $i+=1)
+                    <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
+            </select>
 
-                <div class="product-price-container" style="display: flex; align-items: center; margin-bottom: 30px;">
-                    <span style="font-size: 30px; margin-right: 5px;">$</span>
-                    <input type="text" name="precio" placeholder="Precio" style="width: 80%; font-size: 42px; font-weight: bold; padding: 5px; border: 1px solid #555; background-color: #333; color: white;">
-                </div>
-
-                <select name="cantidad" class="quantity-selector">
-                    <option value="">Cantidad de Registro</option>
-                    @for ($i = 1; $i <= 50; $i+=1)
-                        <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                </select>
-
-                <div class="product-description">
-                    <div class="description-title font-bold mb-2">Descripción del Cómic:</div>
-                    <div class="description-content">
-                        <div class="description-row">
-                            <span>SKU:</span>
-                            <span><input type="text" name="sku" class="w-full p-1"></span>
-                        </div>
-                        <div class="description-row">
-                            <span>Año de publicación:</span>
-                            <span><input type="text" name="anio_publicacion" class="w-full p-1"></span>
-                        </div>
-                        <div class="description-row">
-                            <span>Mes:</span>
-                            <span><input type="text" name="mes" class="w-full p-1"></span>
-                        </div>
-                        <div class="description-row">
-                            <span>Número de páginas:</span>
-                            <span><input type="text" name="paginas" class="w-full p-1"></span>
-                        </div>
-                        <div class="description-row">
-                            <span>Colección:</span>
-                            <span><input type="text" name="coleccion" class="w-full p-1"></span>
-                        </div>
+            <div class="product-description">
+                <div class="description-title font-bold mb-2">Descripción del Cómic:</div>
+                <div class="description-content">
+                    <div class="description-row">
+                        <span>SKU:</span>
+                        <span><input type="text" name="sku" class="w-full p-1"></span>
+                    </div>
+                    <div class="description-row">
+                        <span>Descripción:</span>
+                        <span><input type="text" name="descripcion" class="w-full p-1"></span>
+                    </div>
+                    <div class="description-row">
+                        <span>Editorial:</span>
+                        <span><input type="text" name="editorial_o_marca" class="w-full p-1"
+                                placeholder="Marvel, DC, etc."></span>
+                    </div>
+                    <div class="description-row">
+                        <span>Fecha de lanzamiento:</span>
+                        <span><input type="date" name="fecha_lanzamiento" class="w-full p-1"></span>
+                    </div>
+                    <div class="description-row">
+                        <span>Proveedor:</span>
+                        <span>
+                            <select name="id_proveedor" class="w-full p-1">
+                                <option value="">Seleccionar proveedor</option>
+                                @foreach($proveedores as $proveedor)
+                                    <option value="{{ $proveedor->id_proveedor }}">{{ $proveedor->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </span>
                     </div>
                 </div>
-                <button type="submit" class="add-to-cart"
-                        style="background-color:rgb(255, 238, 0); color: black; font-weight: bold; font-size: 16px; padding: 12px 20px; margin-top: 20px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); display: block; width: 100%;">
-                    Guardar Figura
-                </button>
             </div>
+
+            <button type="submit" class="add-to-cart"
+                style="background-color:rgb(255, 238, 0); color: black; font-weight: bold; font-size: 16px; padding: 12px 20px; margin-top: 20px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); display: block; width: 100%;">
+                Guardar Cómic
+            </button>
         </div>
-    </form>
+    </div>
+</form>
+
 </div>
 
 <footer class="bg-white py-4 border-t">
@@ -181,6 +193,19 @@
       </div>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: '{{ session('success') }}',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar'
+    });
+</script>
+@endif
 
 </body>
 </html>

@@ -19,105 +19,84 @@
 </nav>
     <div class="max-w-4xl mx-auto mt-10 bg-white shadow-md rounded-lg p-8">
         <h1 class="text-3xl font-bold mb-6">Editar Producto</h1>
-        <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
+        <form action="{{ route('productos.update', $producto->id_producto) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
 
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block font-semibold">Nombre</label>
-                    <input type="text" name="nombre" value="{{ $producto->nombre }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <label class="block font-semibold">Nombre</label>
+            <input type="text" name="nombre" value="{{ $producto->nombre }}" class="w-full p-2 border border-gray-300 rounded">
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Precio</label>
-                    <input type="text" name="precio" value="{{ $producto->precio }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
+        <div>
+            <label class="block font-semibold">Precio</label>
+            <input type="text" name="precio" value="{{ $producto->precio }}" class="w-full p-2 border border-gray-300 rounded">
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Cantidad</label>
-                    <input 
-                        type="number" 
-                        name="stock" 
-                        value="{{ $producto->stock }}" 
-                        class="w-full p-2 border border-gray-300 rounded"
-                        min="1" 
-                        max="100"
-                        required
-                        oninvalid="this.setCustomValidity('Ingresa una cantidad válida entre 1 y 100')" 
-                        oninput="this.setCustomValidity('')"
-                    >
-                </div>
+        <div>
+            <label class="block font-semibold">Stock disponible</label>
+            <input 
+                type="number" 
+                name="stock_actual" 
+                value="{{ $producto->stock_actual }}" 
+                class="w-full p-2 border border-gray-300 rounded"
+                min="1" 
+                max="100"
+                required
+                oninvalid="this.setCustomValidity('Ingresa una cantidad válida entre 1 y 100')" 
+                oninput="this.setCustomValidity('')"
+            >
+        </div>
 
+        <div>
+            <label class="block font-semibold">Imagen</label>
+            <input type="file" name="imagen" class="w-full">
+            @if ($producto->imagen_url)
+                <img src="{{ asset('storage/' . $producto->imagen_url) }}" class="mt-2 w-32 h-auto">
+            @endif
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Imagen</label>
-                    <input type="file" name="imagen" class="w-full">
-                    @if ($producto->imagen)
-                        <img src="{{ asset('storage/' . $producto->imagen) }}" class="mt-2 w-32 h-auto">
-                    @endif
-                </div>
+        <div>
+            <label class="block font-semibold">Descripción</label>
+            <input type="text" name="descripcion" value="{{ $producto->descripcion }}" class="w-full p-2 border border-gray-300 rounded">
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Tipo</label>
-                    <input type="text" name="tipo" value="{{ $producto->tipo }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
+        <div>
+            <label class="block font-semibold">SKU</label>
+            <input type="text" name="sku" value="{{ $producto->sku }}" class="w-full p-2 border border-gray-300 rounded">
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Descripción</label>
-                    <input type="text" name="descripcion" value="{{ $producto->descripcion }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
+        <div>
+            <label class="block font-semibold">Fecha de lanzamiento</label>
+            <input type="date" name="fecha_lanzamiento" value="{{ $producto->fecha_lanzamiento }}" class="w-full p-2 border border-gray-300 rounded">
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Tamaño</label>
-                    <input type="text" name="tamano" value="{{ $producto->tamano }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
+        <div>
+            <label class="block font-semibold">Editorial/Marca</label>
+            <input type="text" name="editorial_o_marca" value="{{ $producto->editorial_o_marca }}" class="w-full p-2 border border-gray-300 rounded">
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Material</label>
-                    <input type="text" name="material" value="{{ $producto->material }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
+        <div>
+            <label class="block font-semibold">Proveedor</label>
+            <select name="id_proveedor" class="w-full p-2 border border-gray-300 rounded">
+                <option value="">Seleccionar proveedor</option>
+                @foreach($proveedores as $proveedor)
+                    <option value="{{ $proveedor->id_proveedor }}" {{ $producto->id_proveedor == $proveedor->id_proveedor ? 'selected' : '' }}>
+                        {{ $proveedor->nombre }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
-                <div>
-                    <label class="block font-semibold">Peso</label>
-                    <input type="text" name="peso" value="{{ $producto->peso }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
+        <div class="col-span-2 text-right">
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                Guardar Cambios
+            </button>
+        </div>
+    </div>
+</form>
 
-                <div>
-                    <label class="block font-semibold">Modelo</label>
-                    <input type="text" name="modelo" value="{{ $producto->modelo }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
-
-                <div>
-                    <label class="block font-semibold">SKU</label>
-                    <input type="text" name="sku" value="{{ $producto->sku }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
-
-                <div>
-                    <label class="block font-semibold">Año de publicación</label>
-                    <input type="text" name="anio_publicacion" value="{{ $producto->anio_publicacion }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
-
-                <div>
-                    <label class="block font-semibold">Mes</label>
-                    <input type="text" name="mes" value="{{ $producto->mes }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
-
-                <div>
-                    <label class="block font-semibold">Páginas</label>
-                    <input type="text" name="paginas" value="{{ $producto->paginas }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
-
-                <div>
-                    <label class="block font-semibold">Colección</label>
-                    <input type="text" name="coleccion" value="{{ $producto->coleccion }}" class="w-full p-2 border border-gray-300 rounded">
-                </div>
-                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Guardar Cambios</button>
-
-            </div>
-            </div>
-            
-        </form>
         
     </div>
     <footer class="bg-white py-4 border-t">
@@ -154,5 +133,18 @@
       </div>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: '{{ session('success') }}',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar'
+    });
+</script>
+@endif
+
 </body>
 </html>

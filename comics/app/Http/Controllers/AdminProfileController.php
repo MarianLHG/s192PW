@@ -11,9 +11,24 @@ class AdminProfileController extends Controller
     {
         return view('perfilAdmin');
     }
+    
     public function edit()
     {
         $perfil = AdminProfile::first(); // o Auth::user()->perfil si hay auth
+        
+        // Si no existe, crear un perfil por defecto
+        if (!$perfil) {
+            $perfil = AdminProfile::create([
+                'empresa' => 'Pow! Comics',
+                'encargado' => 'Administrador',
+                'correo' => 'admin@powcomics.com',
+                'telefono' => '442-123-4567',
+                'direccion' => 'Calle Principal #123',
+                'estatus' => 'activo',
+                'razon_social' => 'Pow Comics S.A. de C.V.'
+            ]);
+        }
+        
         return view('perfilAdmin', compact('perfil'));
     }
 

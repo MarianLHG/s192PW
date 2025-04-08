@@ -29,10 +29,10 @@
         </div>
       </div>
       <div class="flex justify-center space-x-4 mt-4">
-        <a class="bg-black text-white px-4 py-2 rounded" href="{{ route('figurasRegistro') }}">
+        <a class="bg-black text-white px-4 py-2 rounded" href="{{ route('figuras.create') }}">
             Registrar nueva figura
         </a>
-        <a class="bg-black text-white px-4 py-2 rounded" href="{{ route('comicsRegistro') }}">
+        <a class="bg-black text-white px-4 py-2 rounded" href="{{ route('comics.create') }}">
             Registrar nuevo cómic
         </a>
       </div>

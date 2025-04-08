@@ -10,6 +10,8 @@ class Proveedor extends Model
 
     protected $table = 'proveedores';
     
+    protected $primaryKey = 'id_proveedor';
+    
     protected $fillable = [
         'nombre',
         'email',
@@ -18,4 +20,9 @@ class Proveedor extends Model
         'direccion',
         'fecha_ultimo_abastecimiento',
     ];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'id_proveedor');
+    }
 }

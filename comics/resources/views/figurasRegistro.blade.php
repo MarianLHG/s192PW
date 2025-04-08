@@ -95,43 +95,56 @@
                 <input type="file" id="imageUpload" name="imagen" accept="image/*" class="form-control">
             </div>
             <div class="product-details">
-                <input type="text" name="titulo" class="product-title-input" placeholder="Set de juego hasbro Marvel" style="width: 100%; font-size: 24px; margin-bottom: 20px; padding: 8px; border: 1px solid #555; background-color: #333; color: white;">
+                <input type="text" name="nombre" class="product-title-input" placeholder="Nombre del producto"
+                    style="width: 100%; font-size: 24px; margin-bottom: 20px; padding: 8px; border: 1px solid #555; background-color: #333; color: white;">
+
                 <div style="display: flex; align-items: center; margin-bottom: 30px;">
                     <span style="font-size: 30px; margin-right: 5px;">$</span>
-                    <input type="text" name="precio" class="product-price-input" placeholder="1,393.00" style="width: 80%; font-size: 42px; font-weight: bold; padding: 5px; border: 1px solid #555; background-color: #333; color: white;">
+                    <input type="text" name="precio" class="product-price-input" placeholder="Precio"
+                        style="width: 80%; font-size: 42px; font-weight: bold; padding: 5px; border: 1px solid #555; background-color: #333; color: white;">
                 </div>
-                <select class="quantity-selector" name="cantidad">
+
+                <select class="quantity-selector" name="stock_actual">
                     <option disabled selected>Cantidad de Registro</option>
                     @for($i = 1; $i <= 50; $i += ($i < 10 ? 1 : 5))
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                 </select>
-                
+
                 <div class="product-description">
                     <div class="description-title font-bold mb-2">Descripción y especificaciones:</div>
                     <div class="description-content">
                         <div class="description-row">
-                            <span>Detalles del artículo:</span>
-                            <input type="text" name="descripcion" placeholder="Set de figuras de acción" style="width: 100%; padding: 5px;">
+                            <span>Descripción:</span>
+                            <input type="text" name="descripcion" placeholder="Set de figuras de acción"
+                                style="width: 100%; padding: 5px;">
                         </div>
                         <div class="description-row">
-                            <span>Tamaño:</span>
-                            <input type="text" name="tamano" placeholder="31.8 cm" style="width: 100%; padding: 5px;">
+                            <span>SKU:</span>
+                            <input type="text" name="sku" placeholder="Código único"
+                                style="width: 100%; padding: 5px;">
                         </div>
                         <div class="description-row">
-                            <span>Material:</span>
-                            <input type="text" name="material" placeholder="Plástico" style="width: 100%; padding: 5px;">
+                            <span>Editorial/Marca:</span>
+                            <input type="text" name="editorial_o_marca" placeholder="Hasbro, Bandai, etc."
+                                style="width: 100%; padding: 5px;">
                         </div>
                         <div class="description-row">
-                            <span>Peso:</span>
-                            <input type="text" name="peso" placeholder="0.79" style="width: 100%; padding: 5px;">
+                            <span>Fecha lanzamiento:</span>
+                            <input type="date" name="fecha_lanzamiento" style="width: 100%; padding: 5px;">
                         </div>
                         <div class="description-row">
-                            <span>Modelo:</span>
-                            <input type="text" name="modelo" placeholder="E4252" style="width: 100%; padding: 5px;">
+                            <span>Proveedor:</span>
+                            <select name="id_proveedor" style="width: 100%; padding: 5px;">
+                                <option value="">Seleccionar proveedor</option>
+                                @foreach($proveedores as $proveedor)
+                                    <option value="{{ $proveedor->id_proveedor }}">{{ $proveedor->nombre }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
+
                 <button type="submit" class="add-to-cart"
                     style="background-color:rgb(255, 238, 0); color: black; font-weight: bold; font-size: 16px; padding: 12px 20px; margin-top: 20px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); display: block; width: 100%;">
                     Guardar Figura
@@ -140,6 +153,7 @@
         </div>
     </div>
 </form>
+
 <footer class="bg-white py-4 border-t">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
@@ -174,6 +188,19 @@
       </div>
     </div>
   </footer>
-  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: '{{ session('success') }}',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar'
+    });
+</script>
+@endif
+
 </body>
 </html>

@@ -34,62 +34,52 @@
         @if ($productos->count() > 0)
             <!-- Fragmento dentro del foreach de productos -->
             @foreach($productos as $producto)
-            <div class="bg-white rounded-lg shadow-md overflow-hidden flex items-center p-4 
-                {{ $producto->stock < 3 ? 'border-2 border-red-500' : '' }}">
-              <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"
-                  class="w-28 h-40 object-cover rounded border border-gray-300">
-              <div class="ml-6">
-                <h2 class="text-2xl font-bold text-gray-800">{{ $producto->nombre }}</h2>
-                <p class="text-gray-600 mt-1">${{ number_format($producto->precio, 2) }} MXN</p>
-                <p class="text-sm mt-2 text-gray-500">Tipo: <span class="uppercase font-semibold">{{ $producto->tipo }}</span></p>
-                <p class="text-sm mt-1 text-gray-500">Modelo: {{ $producto->modelo ?? 'N/A' }}</p>
-                <p class="text-sm mt-1 text-gray-500">Tamaño: {{ $producto->tamano ?? 'N/A' }}</p>
-                <p class="text-sm mt-1 text-gray-500">Material: {{ $producto->material ?? 'N/A' }}</p>
-                <p class="text-sm mt-1 text-gray-500">Peso: {{ $producto->peso ?? 'N/A' }}</p>
-                <p class="text-sm mt-2 text-gray-700">Descripción: {{ $producto->descripcion ?? 'Sin descripción.' }}</p>
-                <p class="text-sm mt-1 text-gray-500">SKU: {{ $producto->sku ?? 'N/A' }}</p>
-                <p class="text-sm mt-1 text-gray-500">Año de publicación: {{ $producto->anio_publicacion ?? 'N/A' }}</p>
-                <p class="text-sm mt-1 text-gray-500">Mes: {{ $producto->mes ?? 'N/A' }}</p>
-                <p class="text-sm mt-1 text-gray-500">Número de páginas: {{ $producto->paginas ?? 'N/A' }}</p>
-                <p class="text-sm mt-1 text-gray-500">Colección: {{ $producto->coleccion ?? 'N/A' }}</p>
-
-                <p class="mt-3 text-sm text-gray-500">
-                    Stock disponible: 
-                    <span class="
-                        font-bold
-                        @if($producto->stock < 3)
-                            text-red-500
-                        @elseif($producto->stock <= 5)
-                            text-yellow-500
-                        @else
-                            text-green-600
-                        @endif
-                    ">
-                        {{ $producto->stock }} unidades
-                    </span>
-                </p>
-
-
-                <div class="flex space-x-2 mt-4">
-                  <a href="{{ route('productos.edit', $producto->id)}}" 
-                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    Editar
-                  </a>
-
-                  <form action="{{ route('productos.destroy', $producto->id) }}" method="POST"
-                        onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                      Eliminar
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-            @endforeach
+        <div class="bg-white rounded-lg shadow-md overflow-hidden flex items-center p-4 
+            {{ $producto->stock_actual < 3 ? 'border-2 border-red-500' : '' }}">
+          <img src="{{ asset('storage/' . $producto->imagen_url) }}" alt="{{ $producto->nombre }}"
+              class="w-28 h-40 object-cover rounded border border-gray-300">
+          <div class="ml-6">
+            <h2 class="text-2xl font-bold text-gray-800">{{ $producto->nombre }}</h2>
+            <p class="text-gray-600 mt-1">${{ number_format($producto->precio, 2) }} MXN</p>
             
+            <p class="text-sm mt-2 text-gray-700">Descripción: {{ $producto->descripcion ?? 'Sin descripción.' }}</p>
+            <p class="text-sm mt-1 text-gray-500">SKU: {{ $producto->sku ?? 'N/A' }}</p>
+            <p class="text-sm mt-1 text-gray-500">Editorial/Marca: {{ $producto->editorial_o_marca ?? 'N/A' }}</p>
+            <p class="text-sm mt-1 text-gray-500">Fecha lanzamiento: {{ $producto->fecha_lanzamiento ?? 'N/A' }}</p>
 
+            <p class="mt-3 text-sm text-gray-500">
+                Stock disponible: 
+                <span class="font-bold
+                    @if($producto->stock_actual < 3)
+                        text-red-500
+                    @elseif($producto->stock_actual <= 5)
+                        text-yellow-500
+                    @else
+                        text-green-600
+                    @endif
+                ">
+                    {{ $producto->stock_actual }} unidades
+                </span>
+            </p>
+
+            <div class="flex space-x-2 mt-4">
+              <a href="{{ route('productos.edit', $producto->id_producto) }}" 
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Editar
+              </a>
+
+              <form action="{{ route('productos.destroy', $producto->id_producto) }}" method="POST"
+                    onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                  Eliminar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        @endforeach
         @else
             <div class="bg-white rounded-lg shadow-md p-4 text-center">
                 <p class="text-gray-500">No hay productos registrados.</p>
@@ -141,7 +131,8 @@
     </div>
   </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @if(session('success'))
 <script>
     Swal.fire({
@@ -153,6 +144,7 @@
     });
 </script>
 @endif
+
 @if ($errors->any())
 <script>
     Swal.fire({
@@ -167,7 +159,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@if($productos->where('stock', '<', 5)->count() > 0)
+@if($productos->where('stock_actual', '<', 5)->count() > 0)
   <script>
     Swal.fire({
       icon: 'warning',
